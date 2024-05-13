@@ -1,0 +1,54 @@
+:root {
+    --mainColor: #b3cbb5;
+    --opacityColor: rgba(154, 199, 139, 0.638);
+    --textColor: black;
+    --textColor2: #e1e3e2;
+    --font1: "Nanum Myeongjo", serif;
+    --font2: "Hepta Slab", serif;
+    --font3: "Ubuntu Condensed", sans-serif;
+}
+
+nav {
+    background-color: var(--mainColor);
+}
+
+/* parallax styling */
+.parallax-container {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-wrapper {
+    min-height: 500px;
+}
+
+h4 {
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 20px;
+    border-bottom: 1px solid var(--textColor);
+}
+
+h5 {
+    margin-left: 5px;
+}
+
+label {
+    color: var(--textColor) !important;
+}
+
+.add-piece {
+    font-family: var(--font1);
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
+@media only screen and (min-width: 993px) {
+    .brand-logo {
+        margin-left: 20px;
+    }
+}

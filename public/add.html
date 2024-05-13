@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Mine</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Nanum+Myeongjo&family=Ubuntu+Condensed&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/materialize/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/add.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Music Mine</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/add">Add Music</a></li>
+                    <li><a href="/music">My Music</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Add Music</a></li>
+        <li><a href="/music">My Music</a></li>
+    </ul>
+
+    <!-- Parrallax with buttons -->
+    <div class="parallax-container">
+        <div class="parallax"><img src="./assets/images/addPagePara.png"></div>
+    </div>
+
+    <div class="main-wrapper">
+        <form id="form" class="row">
+            <h4>Add Music</h4>
+            <!-- FIRST AND LAST NAME -->
+            <h5>Your Info</h5>
+            <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+            <!-- COMPOSITION -->
+            <h5>Composition Information</h5>
+            <div class="input-field col s6">
+                <input id="piece_name" type="text" class="validate">
+                <label for="piece_name">Name of Piece</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="composer" type="text" class="validate">
+                <label for="composer">Composer/Arranger</label>
+            </div>
+            <!-- ENSEMBLE -->
+            <div class="input-field col s12 m6">
+                <select>
+                    <option value="" disabled selected></option>
+                    <option value="Choir">Choir</option>
+                    <option value="Band">Band</option>
+                    <option value="Orchestra">Orchestra</option>
+                    <option value="Jazz Band">Jazz Band</option>
+                    <option value="Marching Band">Marching Band</option>
+                    <option value="Acapella Group">Acapella Group</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label>Which kind of ensemble is this for?</label>
+            </div>
+            <!--CHALLENGE LEVEL -->
+            <div class="input-field col s12 m6">
+                <select>
+                    <option value="" disabled selected></option>
+                    <option value="1">1 (easy)</option>
+                    <option value="2">2 (medium-easy)</option>
+                    <option value="3">3 (medium)</option>
+                    <option value="4">4 (medium-difficult)</option>
+                    <option value="5">5 (difficult)</option>
+                </select>
+                <label>How Challenging is this piece?</label>
+            </div>
+            <!-- MORE INFORMATION -->
+            <div class="input-field col s12">
+                <select>
+                    <option value="N/A" disabled selected></option>
+                    <option value="unison or two part">Unison or Two Part</option>
+                    <option value="satb">SATB</option>
+                    <option value="sab">SAB (Three-part Mixed)</option>
+                    <option value="treble">Treble Choir</option>
+                    <option value="tenor and bass">Tenor Bass</option>
+                    <option value="advanced">5 or more parts</option>
+                    <option value="Instrumental">Instrumental</option>
+                </select>
+                <label>What is the Voicing of this piece?</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="language" type="text" class="validate">
+                    <label for="language">Language</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="description" type="text" class="validate">
+                    <label for="description">Any Additional Description</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Parrallax with submit button -->
+    <div class="parallax-container">
+        <button id="add-piece" class="add-piece" type="submit" form="form">Add Piece</button>
+        <div class="parallax"><img src="./assets/images/addPagePara.png"></div>
+    </div>
+
+    <script src="./assets/js/jQuery/jquery-3.7.1.slim.min.js"></script>
+    <script src="./assets/js/materialize/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.parallax').parallax();
+        });
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
+        $(document).ready(function () {
+            $('.tabs').tabs();
+        });
+
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
