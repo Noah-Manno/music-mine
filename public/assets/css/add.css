@@ -8,6 +8,10 @@
     --font3: "Ubuntu Condensed", sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 nav {
     background-color: var(--mainColor);
 }
