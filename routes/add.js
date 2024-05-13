@@ -1,18 +1,18 @@
-const music = require('express').Router();
+const add = require('express').Router();
 const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid')
 
-music.get('/', (req, res) => {
+add.get('/', (req, res) => {
     console.info(`${req.method} request received for music`);
     readFromFile('./db/music.json').then((data) => res.json(JSON.parse(data)));
 })
 
-music.post('/', (req, res) => {
+add.post('/', (req, res) => {
     console.info(`${req.method} request received for music`);
     // Destructure Music
     const { title, composer, ensemble, challenge, voicing, language, desc } = req.body;
 
-    if (title && composer && ensemble && challenge && voicing && language && desc) {
+    if (title) {
         const newPiece = {
             title,
             composer,
@@ -36,7 +36,7 @@ music.post('/', (req, res) => {
     }
 });
 
-music.delete('/:id', (req, res) => {
+add.delete('/:id', (req, res) => {
     const pieceId = req.params.id;
 
     readFromFile('./db/music.json')
@@ -62,4 +62,4 @@ music.delete('/:id', (req, res) => {
 });
 
 
-module.exports = music;
+module.exports = add;

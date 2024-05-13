@@ -40,11 +40,15 @@ label {
 }
 
 .add-piece {
-    font-family: var(--font1);
     font-size: 25px;
     text-align: center;
     padding: 10px 20px;
     border-radius: 16px;
+}
+
+.add-piece:hover {
+    cursor: pointer;
+    background-color: var(--mainColor);
 }
 
 @media only screen and (min-width: 993px) {
