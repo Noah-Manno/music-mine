@@ -1,0 +1,25 @@
+{
+  "name": "music-mine",
+  "version": "1.0.0",
+  "description": "A music web application which allows users to organize their music libraries with ease.",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "music-mine"
+  },
+  "keywords": [
+    "music",
+    "sheet",
+    "music",
+    "organize"
+  ],
+  "author": "Noah Manno",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
