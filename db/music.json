@@ -8,5 +8,19 @@
         "language": "Enlgish",
         "desc": "A 4 part SATB Acapella Arrangment",
         "id": "28dc"
+    },
+    {
+        "user": {
+            "first_name": "Noah",
+            "last_name": "Manno"
+        },
+        "title": "Best Part",
+        "composer": "Noah Manno",
+        "ensemble": "Acapella Group",
+        "challenge": "3",
+        "voicing": "",
+        "language": "English",
+        "desc": "A 4 part acapella piece for an acapella group",
+        "id": "a406"
     }
 ]

@@ -10,10 +10,11 @@ add.get('/', (req, res) => {
 add.post('/', (req, res) => {
     console.info(`${req.method} request received for music`);
     // Destructure Music
-    const { title, composer, ensemble, challenge, voicing, language, desc } = req.body;
+    const { user, title, composer, ensemble, challenge, voicing, language, desc } = req.body;
 
     if (title) {
         const newPiece = {
+            user,
             title,
             composer,
             ensemble,

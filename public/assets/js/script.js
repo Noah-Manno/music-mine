@@ -52,6 +52,10 @@ const deletePiece = (id) =>
 const handleSavingPiece = (event) => {
     event.preventDefault();
     const newPiece = {
+            'user': {
+                'first_name': firstNameInput.val(),
+                'last_name': lastNameInput.val()
+            },
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
