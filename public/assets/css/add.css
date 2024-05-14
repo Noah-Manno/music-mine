@@ -18,7 +18,7 @@ nav {
 
 /* parallax styling */
 .parallax-container {
-    height: 100px;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
