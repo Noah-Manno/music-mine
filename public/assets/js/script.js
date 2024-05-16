@@ -63,13 +63,7 @@ const handleSavingPiece = (event) => {
     console.log(newPiece)
     savePiece(newPiece).then(() => {
         console.info('song successfully added')
-        titleInput.val('');
-        composerInput.val('');
-        ensembleInput.val('');
-        challengeInput.val('');
-        voicingInput.val('');
-        languageInput.val('');
-        descInput.val('');
+        event.currentTarget.reset();
     })
 }
 
