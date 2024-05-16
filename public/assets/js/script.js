@@ -18,7 +18,7 @@ if (window.location.pathname === '/add') {
     composerInput = $('#composer')
     ensembleInput = $('#ensemble')
     challengeInput = $('#challenge')
-    voicingInput = $('voicing')
+    voicingInput = $('#voicing')
     languageInput = $('#language')
     descInput = $('#description')
     addPieceButton = $('#add-piece')
