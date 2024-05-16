@@ -19,6 +19,11 @@ app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
+// GET route for Login Page
+app.get('/login', (req, res) => 
+    res.sendFile(path.join(__dirname, '/public/login.html'))
+);
+
 // GET route for Add Page
 app.get('/add', (req, res) => 
     res.sendFile(path.join(__dirname, '/public/add.html'))

@@ -52,10 +52,6 @@ const deletePiece = (id) =>
 const handleSavingPiece = (event) => {
     event.preventDefault();
     const newPiece = {
-            'user': {
-                'first_name': firstNameInput.val(),
-                'last_name': lastNameInput.val()
-            },
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
@@ -67,7 +63,6 @@ const handleSavingPiece = (event) => {
     console.log(newPiece)
     savePiece(newPiece).then(() => {
         console.info('song successfully added')
-
         titleInput.val('');
         composerInput.val('');
         ensembleInput.val('');

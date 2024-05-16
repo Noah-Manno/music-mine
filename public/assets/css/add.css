@@ -10,21 +10,37 @@
 
 body {
     overflow-x: hidden;
+    min-height: 100vh;
+    background: url(../images/addpageback.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 nav {
     background-color: var(--mainColor);
 }
 
-/* parallax styling */
-.parallax-container {
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.add-music {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    animation: slide-right .8s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-10%);
+        opacity: 0;
+    } 100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 .main-wrapper {
+    margin-top: 80px;
     min-height: 500px;
 }
 
@@ -44,6 +60,9 @@ label {
 }
 
 .add-piece {
+    font-family: var(--font3);
+    border: 1px solid gray;
+    background-color: var(--mainColor);
     font-size: 25px;
     text-align: center;
     padding: 10px 20px;
@@ -52,7 +71,14 @@ label {
 
 .add-piece:hover {
     cursor: pointer;
-    background-color: var(--mainColor);
+    background-color: var(--opacityColor);
+    border: 1px solid black;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (min-width: 993px) {

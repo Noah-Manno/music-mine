@@ -27,6 +27,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li class="active"><a href="/add">Add Music</a></li>
                     <li><a href="/music">My Music</a></li>
                 </ul>
@@ -35,74 +36,65 @@
     </div>
     <ul class="sidenav" id="mobile-demo">
         <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
         <li><a href="/add">Add Music</a></li>
         <li><a href="/music">My Music</a></li>
     </ul>
 
-    <div class="main-wrapper">
-        <form id="form" class="row">
-            <h4>Add Music</h4>
-            <!-- FIRST AND LAST NAME -->
-            <h5>Your Info</h5>
-            <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-            </div>
-            <!-- COMPOSITION -->
-            <h5>Composition Information</h5>
-            <div class="input-field col s6">
-                <input id="piece_name" type="text" class="validate">
-                <label for="piece_name">Name of Piece</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="composer" type="text" class="validate">
-                <label for="composer">Composer/Arranger</label>
-            </div>
-            <!-- ENSEMBLE -->
-            <div class="input-field col s12 m6">
-                <select id="ensemble">
-                    <option value="" disabled selected></option>
-                    <option value="Choir">Choir</option>
-                    <option value="Band">Band</option>
-                    <option value="Orchestra">Orchestra</option>
-                    <option value="Jazz Band">Jazz Band</option>
-                    <option value="Marching Band">Marching Band</option>
-                    <option value="Acapella Group">Acapella Group</option>
-                    <option value="Other">Other</option>
-                </select>
-                <label>Which kind of ensemble is this for?</label>
-            </div>
-            <!--CHALLENGE LEVEL -->
-            <div class="input-field col s12 m6">
-                <select id="challenge">
-                    <option value="" disabled selected></option>
-                    <option value="1">1 (easy)</option>
-                    <option value="2">2 (medium-easy)</option>
-                    <option value="3">3 (medium)</option>
-                    <option value="4">4 (medium-difficult)</option>
-                    <option value="5">5 (difficult)</option>
-                </select>
-                <label>How Challenging is this piece?</label>
-            </div>
-            <!-- MORE INFORMATION -->
-            <div class="input-field col s12">
-                <select id="voicing">
-                    <option value="N/A" disabled selected></option>
-                    <option value="unison or two part">Unison or Two Part</option>
-                    <option value="satb">SATB</option>
-                    <option value="sab">SAB (Three-part Mixed)</option>
-                    <option value="treble">Treble Choir</option>
-                    <option value="tenor and bass">Tenor Bass</option>
-                    <option value="advanced">5 or more parts</option>
-                    <option value="Instrumental">Instrumental</option>
-                </select>
-                <label>What is the Voicing of this piece?</label>
-            </div>
-            <div class="row">
+
+    <div class="row">
+        <div class="main-wrapper col s12 m8 l5 offset-l1">
+            <form id="form" class="row add-music">
+                <h4>Add Music</h4>
+                <!-- COMPOSITION -->
+                <div class="input-field col s6">
+                    <input id="piece_name" type="text" class="validate">
+                    <label for="piece_name">Name of Piece</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="composer" type="text" class="validate">
+                    <label for="composer">Composer/Arranger</label>
+                </div>
+                <!-- ENSEMBLE -->
+                <div class="input-field col s12 m6">
+                    <select id="ensemble">
+                        <option value="" disabled selected></option>
+                        <option value="Choir">Choir</option>
+                        <option value="Band">Band</option>
+                        <option value="Orchestra">Orchestra</option>
+                        <option value="Jazz Band">Jazz Band</option>
+                        <option value="Marching Band">Marching Band</option>
+                        <option value="Acapella Group">Acapella Group</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label>Which kind of ensemble is this for?</label>
+                </div>
+                <!--CHALLENGE LEVEL -->
+                <div class="input-field col s12 m6">
+                    <select id="challenge">
+                        <option value="" disabled selected></option>
+                        <option value="1">1 (easy)</option>
+                        <option value="2">2 (medium-easy)</option>
+                        <option value="3">3 (medium)</option>
+                        <option value="4">4 (medium-difficult)</option>
+                        <option value="5">5 (difficult)</option>
+                    </select>
+                    <label>How Challenging is this piece?</label>
+                </div>
+                <!-- MORE INFORMATION -->
+                <div class="input-field col s12">
+                    <select id="voicing">
+                        <option value="N/A" disabled selected></option>
+                        <option value="unison or two part">Unison or Two Part</option>
+                        <option value="satb">SATB</option>
+                        <option value="sab">SAB (Three-part Mixed)</option>
+                        <option value="treble">Treble Choir</option>
+                        <option value="tenor and bass">Tenor Bass</option>
+                        <option value="advanced">5 or more parts</option>
+                        <option value="Instrumental">Instrumental</option>
+                    </select>
+                    <label>What is the Voicing of this piece?</label>
+                </div>
                 <div class="input-field col s6">
                     <input id="language" type="text" class="validate">
                     <label for="language">Language</label>
@@ -111,22 +103,20 @@
                     <input id="description" type="text" class="validate">
                     <label for="description">Any Additional Description</label>
                 </div>
-            </div>
-        </form>
+                <div class="button-container">
+                    <button id="add-piece" class="add-piece" type="submit" form="form">Add Piece</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Parrallax with submit button -->
-    <div class="parallax-container">
-            <button id="add-piece" class="add-piece" type="submit" form="form">Add Piece</button>
-        <div class="parallax"><img src="./assets/images/addPagePara.png"></div>
+
     </div>
+
 
     <script src="./assets/js/jQuery/jquery-3.7.1.slim.min.js"></script>
     <script src="./assets/js/materialize/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.parallax').parallax();
-        });
 
         $(document).ready(function () {
             $('.sidenav').sidenav();
@@ -138,6 +128,10 @@
 
         $(document).ready(function () {
             $('select').formSelect();
+        });
+
+        $(document).ready(function () {
+            $('.tap-target').tapTarget();
         });
     </script>
     <script src="./assets/js/script.js"></script>
