@@ -1,19 +1,40 @@
 const add = require('express').Router();
-const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
+// const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid')
+const { Pool } = require('pg');
+
+const pool = new Pool(
+    {
+        user: 'postgres',
+        password: 'sqlsqksqjsqh123',
+        host: 'localhost',
+        database: 'music_db'
+    },
+    console.log(`Connected to the music_db database.`)
+)
+
+pool.connect()
 
 add.get('/', (req, res) => {
     console.info(`${req.method} request received for music`);
-    readFromFile('./db/music.json').then((data) => res.json(JSON.parse(data)));
-})
+    pool.query(`SELECT * FROM users`, (error, results) => {
+        if (error) {
+            res.status(500).send('Error fetching data from the database');
+        } else {
+            res.json(results.rows);
+        }
+    });
+});
 
 add.post('/', (req, res) => {
     console.info(`${req.method} request received for music`);
+
     // Destructure Music
-    const { title, composer, ensemble, challenge, voicing, language, desc } = req.body;
+    const { user_id, title, composer, ensemble, challenge, voicing, language, desc } = req.body;
 
     if (title) {
         const newPiece = {
+            user_id, 
             title,
             composer,
             ensemble,
@@ -21,45 +42,27 @@ add.post('/', (req, res) => {
             voicing,
             language,
             desc,
-            id: uuid(),
         };
 
-        readAndAppend(newPiece, './db/music.json');
-
-        const response = {
-            status: 'success',
-            body: newPiece,
-        }
-        res.json(response)
+        // Insert new piece into the music table
+        pool.query(
+            `INSERT INTO music (user_id, piece_title, composer, ensemble, challenge, voicing, text_language, piece_description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+            [user_id, title, composer, ensemble, challenge, voicing, language, desc],
+            (error, results) => {
+                if (error) {
+                    res.status(500).send('Error adding data to the database');
+                } else {
+                    const response = {
+                        status: 'success',
+                        body: newPiece,
+                    };
+                    res.json(response);
+                }
+            }
+        );
     } else {
-        res.json('Error in adding piece')
+        res.json('Error in adding piece');
     }
 });
-
-add.delete('/:id', (req, res) => {
-    const pieceId = req.params.id;
-
-    readFromFile('./db/music.json')
-        .then((data) => {
-            let allMusic = JSON.parse(data);
-            const updatedMusic = allMusic.filter(piece => piece.id !== pieceId)
-
-            if (allMusic.length === updatedMusic.length) {
-                res.status(404).send('piece not found');
-            } else {
-                writeToFile('./db/music.json', updatedMusic)
-                    .then(() => {
-                        res.json({ message: 'Piece deleted successfully'});
-                    })
-                    .catch((err) => {
-                        res.status(500).send('Error deleting piece')
-                    });
-            }
-        })
-        .catch((err) => {
-            res.status(500).send('Error reading Music');
-        });
-});
-
 
 module.exports = add;

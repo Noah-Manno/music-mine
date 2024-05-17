@@ -9,6 +9,7 @@ let voicingInput
 let languageInput
 let descInput
 let addPieceButton
+let user = 1;
 
 if (window.location.pathname === '/add') {
     addForm = $('#form')
@@ -52,6 +53,7 @@ const deletePiece = (id) =>
 const handleSavingPiece = (event) => {
     event.preventDefault();
     const newPiece = {
+            'user_id': user,
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
