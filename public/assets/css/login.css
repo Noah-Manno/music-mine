@@ -1,0 +1,13 @@
+:root {
+    --mainColor: #b3cbb5;
+    --opacityColor: rgba(154, 199, 139, 0.638);
+    --textColor: black;
+    --textColor2: #e1e3e2;
+    --font1: "Nanum Myeongjo", serif;
+    --font2: "Hepta Slab", serif;
+    --font3: "Ubuntu Condensed", sans-serif;
+}
+
+body {
+    background: white;
+}
