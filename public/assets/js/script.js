@@ -57,6 +57,7 @@ const deletePiece = (id) =>
 
 const handleSavingPiece = (event) => {
     event.preventDefault();
+    user = localStorage.getItem('user');
     const newPiece = {
             'user_id': user,
             'title': titleInput.val(),
@@ -74,6 +75,17 @@ const handleSavingPiece = (event) => {
     })
 }
 
+const handleLogin = (event) => {
+    event.preventDefault();
+    newUser = userInput.val();
+    localStorage.setItem('user', newUser);
+    console.log(newUser)
+    window.location.pathname = '/add'
+}
+
 if (window.location.pathname === '/add') {
     addForm.on('submit', handleSavingPiece);
+}
+if (window.location.pathname === '/login') {
+    loginForm.on('submit', handleLogin);
 }
