@@ -1,6 +1,7 @@
 let addForm
-let firstNameInput
-let lastNameInput
+let loginForm
+let userInput
+let passwordInput
 let titleInput
 let composerInput
 let ensembleInput
@@ -9,12 +10,16 @@ let voicingInput
 let languageInput
 let descInput
 let addPieceButton
-let user = 1;
+let user
+
+if (window.location.pathname === '/login') {
+    userInput = $('#username')
+    passwordInput = $('#password')
+    loginForm = $('#login-form')
+}
 
 if (window.location.pathname === '/add') {
     addForm = $('#form')
-    firstNameInput = $('#first_name')
-    lastNameInput = $('#last_name')
     titleInput = $('#piece_name')
     composerInput = $('#composer')
     ensembleInput = $('#ensemble')

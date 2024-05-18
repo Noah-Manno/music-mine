@@ -9,5 +9,37 @@
 }
 
 body {
-    background: white;
+    background: var(--mainColor);
+    min-height: 100vh;
+}
+
+.login-container {
+    margin-top: 30px;
+}
+
+.login-card {
+    border-radius: 36px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login-image-container {
+    flex: 1 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 0;
+}
+
+.login-image {
+    width: 100%;
+}
+
+.card-content {
+    flex: 1 0 250px;
 }
