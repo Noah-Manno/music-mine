@@ -1,81 +1,66 @@
 :root {
-    --mainColor: #b3cbb5;
-    --opacityColor: rgba(154, 199, 139, 0.638);
-    --textColor: black;
-    --textColor2: #e1e3e2;
-    --font1: "Nanum Myeongjo", serif;
-    --font2: "Hepta Slab", serif;
-    --font3: "Ubuntu Condensed", sans-serif;
+    --maincolor: #5271ff;
+    --mainfont:  "Fira Sans", sans-serif;
 }
 
-html {
-    background: var(--mainColor);
-    color: var(--textColor);
-    font-family: var(--font1);
-}
-
-/* Parallax styling/customization */
-.parallax-container {
-    height: 450px;
-    top: 0;
+body {
+    background: url(../images/background.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .title-container {
+    animation: .7s slide-right ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    } 100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.landing-photo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    animation: .7s slide-up ease-in;
+    animation-fill-mode: forwards;
+}
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    } 100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.logo {
+    width: 100%;
+    margin: 20px 0px 50px 20px;
+}
+
+.login {
+    margin: 20px;
     text-align: center;
-    margin: 100px 0px 50px 0px;
-    padding: 20px 0px 20px 0px;
-    background-color: var(--opacityColor);
+    font-size: 30px;
+    font-weight: 900;
+    padding: 20px 50px;
+    border-radius: 26px;
+    background-color: var(--maincolor);
+    color: white;
 }
 
-/* Text Styling */
-h1 {
-    font-weight: 800;
-}
-h2 {
-    font-family: var(--font2);
-    font-size: 20px;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-h3 {
-    font-family: var(--font3);
-    font-size: 80px;
-}
-
-/* middle section */
-.middle-container {
-    height: 300px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--textColor2);
-    background-color: var(--mainColor);
-    transition: background-color 1s ease-in-out;
-}
-
-.get-started {
-    transition: 1s transform;
-}
-
-.middle-container:hover {
+.login:hover {
     cursor: pointer;
-    background-color: rgba(105, 185, 105, 0.976)
+    background-color: blue;
 }
-
-.middle-container:hover .get-started{
-    transform: scale(120%);
-}
-
-
-
-/* bottom section */
-.bottom-container {
-    display: flex;
-    overflow-x: scroll;
-}
-
-.bottom-container img {
-    flex: 1 1 100px;
-}
-
