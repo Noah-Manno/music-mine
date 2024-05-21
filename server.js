@@ -1,17 +1,16 @@
 const express = require('express');
 const path = require('path');
-const api = require('./routes/index.js');
+const routes = require('./routes');
+const sequelize = require('./config/connection');
 
-// Looks for a port number specific to the environment. If not, defaults to 3001
-const PORT = process.env.PORT || 3001;
-
-// Initialize Express
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+
+app.use(routes);
 app.use(express.static('public'));
 
 // GET route for homepage
@@ -33,7 +32,6 @@ app.get('/add', (req, res) =>
 app.get('/music', (req, res) => 
     res.sendFile(path.join(__dirname, '/public/music.html'))
 );
-
-app.listen(PORT, () => 
-    console.log(`Server listening at ${PORT}`)
-)
+sequelize.sync({ force: true }).then(() => {
+    app.listen(PORT, () => console.log(`Server listening at ${PORT}`));
+});

@@ -1,21 +1,50 @@
-let addForm
-let loginForm
-let userInput
-let passwordInput
-let titleInput
-let composerInput
-let ensembleInput
-let challengeInput
-let voicingInput
-let languageInput
-let descInput
-let addPieceButton
-let user
+let addForm, loginForm, userInput, passwordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, user;
 
 if (window.location.pathname === '/login') {
     userInput = $('#username')
     passwordInput = $('#password')
     loginForm = $('#login-form')
+
+    const sendLogin = async (loginAttempt) => {
+        try {
+            const response = await fetch('/api/users/login', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginAttempt)
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Login response:', data);
+                if (data.message === 'Login successful') {
+                    console.log('Login successful');
+                    window.location.replace('/add'); 
+                } else {
+                    console.error('Login failed:', data.message);
+                }
+            } else {
+                console.error('Login failed:', data.message);
+            }
+        } catch (err) {
+            console.error('error during login', err);
+        }
+    }
+
+    const handleLoginFormSubmit = async (event) => {
+        event.preventDefault();
+        let loginAttempt = {
+            'username': userInput.val(),
+            'password': passwordInput.val()
+        }
+        if (loginAttempt.username && loginAttempt.password) {
+            await sendLogin(loginAttempt);
+        } else {
+            console.error('Username and password are required.')
+        }
+    };
+
+    loginForm.on('submit', handleLoginFormSubmit)
 }
 
 if (window.location.pathname === '/add') {
@@ -28,38 +57,35 @@ if (window.location.pathname === '/add') {
     languageInput = $('#language')
     descInput = $('#description')
     addPieceButton = $('#add-piece')
-}
 
-const getMusic = () =>
-    fetch('/api/add', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const getMusic = () =>
+        fetch('/api/add', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-const savePiece = (newPiece) =>
-    fetch('/api/add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newPiece)
-    })
+    const savePiece = (newPiece) =>
+        fetch('/api/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPiece)
+        })
 
-const deletePiece = (id) => 
-    fetch(`/api/add/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const deletePiece = (id) =>
+        fetch(`/api/add/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-const handleSavingPiece = (event) => {
-    event.preventDefault();
-    user = localStorage.getItem('user');
-    const newPiece = {
-            'user_id': user,
+    const handleSavingPiece = (event) => {
+        event.preventDefault();
+        const newPiece = {
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
@@ -67,25 +93,13 @@ const handleSavingPiece = (event) => {
             'voicing': voicingInput.val() || '',
             'language': languageInput.val() || '',
             'desc': descInput.val() || '',
+        };
+        console.log(newPiece)
+        savePiece(newPiece).then(() => {
+            console.info('song successfully added')
+            event.currentTarget.reset();
+        });
     };
-    console.log(newPiece)
-    savePiece(newPiece).then(() => {
-        console.info('song successfully added')
-        event.currentTarget.reset();
-    })
-}
 
-const handleLogin = (event) => {
-    event.preventDefault();
-    newUser = userInput.val();
-    localStorage.setItem('user', newUser);
-    console.log(newUser)
-    window.location.pathname = '/add'
-}
-
-if (window.location.pathname === '/add') {
     addForm.on('submit', handleSavingPiece);
-}
-if (window.location.pathname === '/login') {
-    loginForm.on('submit', handleLogin);
 }
