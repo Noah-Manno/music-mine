@@ -37,9 +37,19 @@ h1 {
 
 .button-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .login {
     margin: 0px;
+}
+
+.sign-up {
+    margin-top: 20px;
+}
+
+.sign-up:hover {
+    color: blue;
 }
