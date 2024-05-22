@@ -1,45 +1,55 @@
-:root {
-    --mainColor: #b3cbb5;
-    --opacityColor: rgba(154, 199, 139, 0.638);
-    --textColor: black;
-    --textColor2: #e1e3e2;
-    --font1: "Nanum Myeongjo", serif;
-    --font2: "Hepta Slab", serif;
-    --font3: "Ubuntu Condensed", sans-serif;
+header a img {
+    width: 200px;
+    margin-left: 20px;
+    animation: .7s slide-right ease-in;
+    animation-fill-mode: forwards;
 }
 
-body {
-    background: var(--mainColor);
-    min-height: 100vh;
+h1 {
+    font-family: var(--mainfont);
+    font-size: 50px;
+    text-align: center;
+    border-bottom: 1px solid var(--maincolor);
+    padding-bottom: 10px;
+    font-weight: 800;
+    color: var(--maincolor);
 }
 
-.login-container {
-    margin-top: 30px;
+.login-form {
+    margin-top: 50px;
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 26px;
+    box-shadow: 0px 0px 10px white;
+    animation: fade-in .7s ease-in;
+    animation-fill-mode: forwards;
 }
 
-.login-card {
-    border-radius: 36px;
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+    
 }
 
-.container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.login-image-container {
-    flex: 1 0 300px;
+.button-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    bottom: 0;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-image {
-    width: 100%;
+.login {
+    margin: 0px;
 }
 
-.card-content {
-    flex: 1 0 250px;
+.sign-up {
+    margin-top: 20px;
+}
+
+.sign-up:hover {
+    color: blue;
 }

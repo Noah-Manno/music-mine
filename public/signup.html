@@ -23,19 +23,23 @@
         <a href="/"><img src="./assets/images/musicminelogo.png" alt="logo"></a>
     </header>
 
-    <form id="login-form" class="row login-form">
-        <h1>Login</h1>
+    <form id="signup-form" class="row login-form">
+        <h1>Sign Up</h1>
         <div class="input-field col s12">
-            <input id="username" type="text" class="validate">
-            <label for="username">Username</label>
+            <input id="newEmail" type="email" class="validate">
+            <label for="newEmail">Enter Your Email</label>
         </div>
         <div class="input-field col s12">
-            <input id="password" type="text" class="validate">
-            <label for="password">Password</label>
+            <input id="newUsername" type="text" class="validate">
+            <label for="newUsername">Enter New Username</label>
+        </div>
+        <div class="input-field col s12">
+            <input id="newPassword" type="text" class="validate">
+            <label for="newPassword">Enter New Password</label>
         </div>
         <div class="button-container col s12">
-            <button id="login-button" class="login" type="submit" form="login-form">Login</button>
-            <a href="/signup"id="sign-up"class="sign-up">New User? Sign Up Here!
+            <button id="sign-up-new" class="login" type="submit" form="signup-form">Sign Up</button>
+            <a href="/login"id="sign-up"class="sign-up">Already A User? Sign In Here!
             </a>
         </div>
     </form>

@@ -4,43 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Mine</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Nanum+Myeongjo&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/css/materialize/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
-<!-- Title Parallax -->
-    <div class="parallax-container">
-        <div class="title-container">
-            <h1>Music Mine</h1>
-            <h2>Music Organizational and Sharing Website</h2>
-        </div>
-        <div class="parallax"><img src="./assets/images/landingPageBackground.png"></div>
-      </div>
-
-<!-- divider/get started section -->
-    <a class="middle-container" role="button" href="/login">
-        <h3 class="get-started">Get Started</h3>
-    </a>
-
-    <div class="bottom-container">
-        <img src="./assets/images/band.png" alt="trumpet">
-        <img src="./assets/images/orchestra.png" alt="violin">
-        <img src="./assets/images/choir.png" alt="choir">
+<div class="row title-container">
+    <div class="col s10 m7 l5 inside-container">
+        <a href="/"><img class="logo"src="./assets/images/musicminelogo.png" alt="logo"></a>
+        <a href="/login" class="login">Login</a>
     </div>
+</div>
+
+<img class="landing-photo"src="./assets/images/landingpagephoto.png" alt="girl studying music">
 
     <script src="./assets/js/jQuery/jquery-3.7.1.slim.min.js"></script>
     <script src="./assets/js/materialize/materialize.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.parallax').parallax();
-        });
-    </script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

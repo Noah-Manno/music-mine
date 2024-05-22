@@ -18,9 +18,7 @@ user.post('/login', async (req, res) => {
         const existingUser = await User.findOne({ where: { username } })
 
         if(!existingUser) {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const newUser = await User.create({ username, password: hashedPassword });
-            res.status(200).json({ message: 'Login successful', user: newUser })
+            res.status(200).json({ message: 'No User' })
         } else {
             const passwordMatch = await bcrypt.compare(password, existingUser.password);
 
@@ -29,6 +27,24 @@ user.post('/login', async (req, res) => {
             } else {
                 res.status(401).json({ message: 'Login failed' });
             }
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+user.post('/signup', async (req, res) => {
+    const { username, password, email } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ where: { username } })
+
+        if (!existingUser) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const newUser = await User.create({ username, password: hashedPassword, email });
+            res.status(200).json({ message: 'Created new user' })
+        } else {
+            res.status(401).json({ message: 'User already exists' })
         }
     } catch (err) {
         res.status(500).json(err);

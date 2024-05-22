@@ -1,4 +1,4 @@
-let addForm, loginForm, userInput, passwordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, user;
+let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton;
 
 if (window.location.pathname === '/login') {
     userInput = $('#username')
@@ -7,7 +7,7 @@ if (window.location.pathname === '/login') {
 
     const sendLogin = async (loginAttempt) => {
         try {
-            const response = await fetch('/api/users/login', { 
+            const response = await fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ if (window.location.pathname === '/login') {
                 console.log('Login response:', data);
                 if (data.message === 'Login successful') {
                     console.log('Login successful');
-                    window.location.replace('/add'); 
+                    window.location.replace('/add');
                 } else {
                     console.error('Login failed:', data.message);
                 }
@@ -45,6 +45,54 @@ if (window.location.pathname === '/login') {
     };
 
     loginForm.on('submit', handleLoginFormSubmit)
+}
+
+if (window.location.pathname === '/signup') {
+    signupForm = $('#signup-form')
+    newEmailInput = $('#newEmail')
+    newUsernameInput = $('#newUsername')
+    newPasswordInput = $('#newPassword')
+
+    const signUp = async (newSignUp) => {
+        try {
+            const response = await fetch('/api/users/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newSignUp)
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Login response:', data);
+                if (data.message === 'Created new user') {
+                    console.log('Sign up successful');
+                    window.location.replace('/login');
+                } else {
+                    console.error('Login failed:', data.message);
+                }
+            } else {
+                console.error('Login failed:', data.message);
+            }
+        } catch (err) {
+            console.error('error during login', err);
+        }
+    }
+
+    const handleSignUpFormSubmit = async (event) => {
+        event.preventDefault();
+        let newSignUp = {
+            'username': newUsernameInput.val(),
+            'password': newPasswordInput.val(),
+            'email': newEmailInput.val()
+        }
+        if (newSignUp.username && newSignUp.password && newSignUp.email) {
+            await signUp(newSignUp);
+        } else {
+            console.error('Unique username and password and email are required.')
+        }
+    }
+    signupForm.on('submit', handleSignUpFormSubmit)
 }
 
 if (window.location.pathname === '/add') {
