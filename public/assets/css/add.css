@@ -100,6 +100,23 @@ label {
     color: white;
 }
 
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-side-container {
+    margin-top: 20px;
+    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-small {
+    width: 100px
+}
+
 @media only screen and (min-width: 400px){
     .nav-logo {
         margin: 0px 0px 0px 20px;
