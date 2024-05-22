@@ -9,107 +9,116 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Nanum+Myeongjo&family=Ubuntu+Condensed&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap"
         rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/css/materialize/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="stylesheet" href="./assets/css/add.css">
 </head>
 
 <body>
     <!-- NAVBAR -->
-    <div class="navbar-fixed">
+    <div class="navbar">
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Music Mine</a>
+                <a href="#!" class="brand-logo"><img class="nav-logo" src="./assets/images/musicminelogo.png"
+                        alt="logo"></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="/">Logout</a></li>
                     <li class="active"><a href="/add">Add Music</a></li>
-                    <li><a href="/music">My Music</a></li>
+                    <li><a href="/music">My Library</a></li>
+
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>
+                        <span>noah_manno</span>
+                        <img class="profile-image" src="./assets/images/profileimage.png" alt="profile image">
+                    </a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="#!">one</a></li>
+                        <li><a href="#!">two</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="#!">three</a></li>
+                        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+                    </ul>
+
                 </ul>
             </div>
         </nav>
     </div>
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="/">Logout</a></li>
         <li><a href="/add">Add Music</a></li>
-        <li><a href="/music">My Music</a></li>
+        <li><a href="/music">My Library</a></li>
     </ul>
+    </div>
 
-
-    <div class="row">
-        <div class="main-wrapper col s12 m8 l5 offset-l1">
-            <form id="form" class="row add-music">
-                <h4>Add Music</h4>
-                <!-- COMPOSITION -->
-                <div class="input-field col s6">
-                    <input id="piece_name" type="text" class="validate">
-                    <label for="piece_name">Name of Piece</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="composer" type="text" class="validate">
-                    <label for="composer">Composer/Arranger</label>
-                </div>
-                <!-- ENSEMBLE -->
-                <div class="input-field col s12 m6">
-                    <select id="ensemble">
-                        <option value="" disabled selected></option>
-                        <option value="Choir">Choir</option>
-                        <option value="Band">Band</option>
-                        <option value="Orchestra">Orchestra</option>
-                        <option value="Jazz Band">Jazz Band</option>
-                        <option value="Marching Band">Marching Band</option>
-                        <option value="Acapella Group">Acapella Group</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <label>Which kind of ensemble is this for?</label>
-                </div>
-                <!--CHALLENGE LEVEL -->
-                <div class="input-field col s12 m6">
-                    <select id="challenge">
-                        <option value="" disabled selected></option>
-                        <option value="1">1 (easy)</option>
-                        <option value="2">2 (medium-easy)</option>
-                        <option value="3">3 (medium)</option>
-                        <option value="4">4 (medium-difficult)</option>
-                        <option value="5">5 (difficult)</option>
-                    </select>
-                    <label>How Challenging is this piece?</label>
-                </div>
-                <!-- MORE INFORMATION -->
-                <div class="input-field col s12">
-                    <select id="voicing">
-                        <option value="N/A" disabled selected></option>
-                        <option value="unison or two part">Unison or Two Part</option>
-                        <option value="satb">SATB</option>
-                        <option value="sab">SAB (Three-part Mixed)</option>
-                        <option value="treble">Treble Choir</option>
-                        <option value="tenor and bass">Tenor Bass</option>
-                        <option value="advanced">5 or more parts</option>
-                        <option value="instrumental">Instrumental</option>
-                    </select>
-                    <label>What is the Voicing of this piece?</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="language" type="text" class="validate">
-                    <label for="language">Language</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="description" type="text" class="validate">
-                    <label for="description">Any Additional Description</label>
-                </div>
-                <div class="button-container">
-                    <button id="add-piece" class="add-piece" type="submit" form="form">Add Piece</button>
-                </div>
-            </form>
+    <form id="form" class="row add-music">
+        <h4>Add Music</h4>
+        <!-- COMPOSITION -->
+        <div class="input-field col s6">
+            <input id="piece_name" type="text" class="validate">
+            <label for="piece_name">Name of Piece</label>
         </div>
-    </div>
-
-
-    </div>
+        <div class="input-field col s6">
+            <input id="composer" type="text" class="validate">
+            <label for="composer">Composer/Arranger</label>
+        </div>
+        <!-- ENSEMBLE -->
+        <div class="input-field col s12 m6">
+            <select id="ensemble">
+                <option value="" disabled selected></option>
+                <option value="Choir">Choir</option>
+                <option value="Band">Band</option>
+                <option value="Orchestra">Orchestra</option>
+                <option value="Jazz Band">Jazz Band</option>
+                <option value="Marching Band">Marching Band</option>
+                <option value="Acapella Group">Acapella Group</option>
+                <option value="Other">Other</option>
+            </select>
+            <label>Which kind of ensemble is this for?</label>
+        </div>
+        <!--CHALLENGE LEVEL -->
+        <div class="input-field col s12 m6">
+            <select id="challenge">
+                <option value="" disabled selected></option>
+                <option value="1">1 (easy)</option>
+                <option value="2">2 (medium-easy)</option>
+                <option value="3">3 (medium)</option>
+                <option value="4">4 (medium-difficult)</option>
+                <option value="5">5 (difficult)</option>
+            </select>
+            <label>How Challenging is this piece?</label>
+        </div>
+        <!-- MORE INFORMATION -->
+        <div class="input-field col s12">
+            <select id="voicing">
+                <option value="N/A" disabled selected></option>
+                <option value="unison or two part">Unison or Two Part</option>
+                <option value="satb">SATB</option>
+                <option value="sab">SAB (Three-part Mixed)</option>
+                <option value="treble">Treble Choir</option>
+                <option value="tenor and bass">Tenor Bass</option>
+                <option value="advanced">5 or more parts</option>
+                <option value="instrumental">Instrumental</option>
+            </select>
+            <label>What is the Voicing of this piece?</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="language" type="text" class="validate">
+            <label for="language">Language</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="description" type="text" class="validate">
+            <label for="description">Any Additional Description</label>
+        </div>
+    </form>
 
 
     <script src="./assets/js/jQuery/jquery-3.7.1.slim.min.js"></script>
@@ -131,6 +140,8 @@
         $(document).ready(function () {
             $('.tap-target').tapTarget();
         });
+        
+        $('.dropdown-trigger').dropdown();
     </script>
     <script src="./assets/js/script.js"></script>
 </body>

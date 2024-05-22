@@ -29,10 +29,22 @@ body {
 .landing-photo {
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: -100px;
     z-index: -1;
     animation: .7s slide-up ease-in;
     animation-fill-mode: forwards;
+}
+
+.music-notes {
+    position: absolute;
+    bottom: -50px;
+    right: 100px;
+    z-index: -2;
+    animation: 3s slide-up ease-in;
+    animation-fill-mode: forwards;
+    animation-delay: .2s;        
+    opacity: 0;
+    transform: translateY(20px);
 }
 @keyframes slide-up {
     0% {
@@ -64,3 +76,5 @@ body {
     cursor: pointer;
     background-color: blue;
 }
+
+

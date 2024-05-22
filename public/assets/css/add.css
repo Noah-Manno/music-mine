@@ -1,88 +1,65 @@
 :root {
-    --mainColor: #b3cbb5;
-    --opacityColor: rgba(154, 199, 139, 0.638);
-    --textColor: black;
-    --textColor2: #e1e3e2;
-    --font1: "Nanum Myeongjo", serif;
-    --font2: "Hepta Slab", serif;
-    --font3: "Ubuntu Condensed", sans-serif;
+    --maincolor: #5271ff;
+    --mainfont:  "Fira Sans", sans-serif;
+    --font2: "Oswald", sans-serif;
 }
 
 body {
     overflow-x: hidden;
-    min-height: 100vh;
-    background: url(../images/addpageback.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 nav {
-    background-color: var(--mainColor);
+    height: 160px;
+    background-color: transparent;
+    box-shadow: none;
+    --webkit-box-shadow: none;
 }
 
-.add-music {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    animation: slide-right .8s ease-in;
+.nav-logo {
+    width: 200px;
+    margin: 0px 0px 0px 20px;
+    animation: .7s slide-right ease-in;
     animation-fill-mode: forwards;
 }
 
-@keyframes slide-right {
-    0% {
-        transform: translateX(-10%);
-        opacity: 0;
-    } 100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
+ul li a {
+    color: black;
+    font-family: var(--mainfont);
 }
 
-.main-wrapper {
-    margin-top: 80px;
-    min-height: 500px;
+nav ul a.btn {
+    margin-top: 15px;
 }
 
-h4 {
-    text-align: center;
-    padding-bottom: 10px;
-    margin: 20px;
-    border-bottom: 1px solid var(--textColor);
+.dropdown-trigger {
+    color: black;
+    font-family: var(--font2);
 }
 
-h5 {
-    margin-left: 5px;
+.profile-container {
+    margin-right: 20px;
+    margin-top: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
 }
 
-label {
-    color: var(--textColor) !important;
-}
-
-.add-piece {
-    font-family: var(--font3);
-    border: 1px solid gray;
-    background-color: var(--mainColor);
-    font-size: 25px;
-    text-align: center;
-    padding: 10px 20px;
-    border-radius: 16px;
-}
-
-.add-piece:hover {
-    cursor: pointer;
-    background-color: var(--opacityColor);
-    border: 1px solid black;
-}
-
-.button-container {
-    width: 100%;
+.dropdown-trigger {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    background: transparent;
 }
 
-@media only screen and (min-width: 993px) {
-    .brand-logo {
-        margin-left: 20px;
-    }
+.profile-image {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.profile-name {
+    margin: 0px;
+    color: black;
+    position: relative;
+    bottom: 20px;
+    font-family: var(--font2);
 }
