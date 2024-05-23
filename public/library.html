@@ -38,7 +38,7 @@
                 <li><a href="#!"><i class="material-icons white-icon">handshake</i>Your Network</a></li>
             </div>
             <div class="profile-button-container">
-                <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i>profile_name</a>
+                <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i><span id="profile-name">profile_name</span></a>
                 </li>
                 <li><a id="logout-button"><i class="material-icons white-icon logout">logout</i>Logout</a></li>
             </div>
@@ -51,19 +51,11 @@
                     class="material-icons add-folder">create_new_folder</i></a>
         </div>
         <div id="folders"class="folders">
-            <!-- <div class="folder">
-                <h3>BHS Choral Library</h3>
-                <i class="material-icons folder-icons">folder_open</i>
-            </div>
-            <div class="folder">
-                <h3>Home Library</h3>
-                <i class="material-icons folder-icons">folder</i>
-            </div> -->
         </div>
         <div class="current-library">
             <div class="current-library-title-container">
                 <h4 id="active-library-title">Library</h4>
-                <a class="waves-effect waves-light modal-trigger" href="#modal1"><i
+                <a class="waves-effect waves-light modal-trigger" href="#modal2"><i
                         class="material-icons add-piece">add_circle</i></a>
             </div>
             <div class="row">
@@ -85,17 +77,31 @@
             </thead>
     
             <tbody id="table-body">
-              <!-- <tr>
-                <td class="piece-name">Sleep</td>
-                <td>Eric Whitace</td>
-                <td>5/23/24</td>
-              </tr> -->
             </tbody>
           </table>
-
     </main>
+
+     <!-- Add Library Modal -->
+     <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h1>Create New Library</h1>
+            <form id="add-library-form" class="row add-music">
+                <!-- LIBRARY -->
+                <div class="input-field col s12">
+                    <input id="add-library-input" type="text" class="validate">
+                    <label for="add-library-input">Library Name</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn waves-effect waves-light" type="submit" form="add-library-form" name="action">Add Library
+                <i class="material-icons right white-icon">check</i>
+            </button>
+        </div>
+    </div>
+
     <!-- Add Piece Modal -->
-    <div id="modal1" class="modal">
+    <div id="modal2" class="modal">
         <div class="modal-content">
             <h1>Add A Piece</h1>
             <form id="form" class="row add-music">
@@ -191,6 +197,7 @@
             $('.modal').modal();
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/library.js"></script>
 </body>
