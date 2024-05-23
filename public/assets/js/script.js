@@ -1,4 +1,4 @@
-let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, logoutButton, tableBody, folders, activeLibraryTitle;
+let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, logoutButton, tableBody, folders, activeLibraryTitle, addLibraryForm, addLibraryInput, profileName;
 if (window.location.pathname === '/login') {
     userInput = $('#username')
     passwordInput = $('#password')

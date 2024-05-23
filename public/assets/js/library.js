@@ -9,10 +9,11 @@ if (window.location.pathname === '/library') {
     const handleFillingTable = (data) => {
         tableBody.empty();
         data.forEach(piece => {
-            const newTr = $('<tr>')
-            const newPieceName = $('<td class="piece-name">').text(piece.title)
-            const newComposer = $('<td>').text(piece.composer)
-            const newCreatedAt = $('<td>').text(piece.createdAt)
+
+            const newTr = $('<tr>');
+            const newPieceName = $('<td class="piece-name">').text(piece.title);
+            const newComposer = $('<td>').text(piece.composer);
+            const newCreatedAt = $('<td>').text(dayjs(piece.createdAt).format('DD/MM/YYYY hh:mm A'))    
             newTr.append(newPieceName)
             newTr.append(newComposer)
             newTr.append(newCreatedAt)
@@ -59,6 +60,7 @@ if (window.location.pathname === '/library') {
 
     const handlePopulatingLibraries = (data) => {
         let activeLibrary = JSON.parse(sessionStorage.getItem('activeLibrary'))
+        folders.empty()
         for (let index = 0; index < data.length; index++) {
             const library = data[index];
             const newFolder = $('<div class="folder">')
@@ -113,14 +115,9 @@ if (window.location.pathname === '/library') {
     descInput = $('#description')
     addPieceButton = $('#add-piece')
     logoutButton = $('#logout-button')
-
-    const getMusic = () =>
-        fetch('/api/music', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    addLibraryForm = $('#add-library-form')
+    addLibraryInput = $('#add-library-input')
+    profileName = $('#profile-name')
 
     const savePiece = (newPiece) =>
         fetch('/api/music', {
@@ -131,13 +128,34 @@ if (window.location.pathname === '/library') {
             body: JSON.stringify(newPiece)
         })
 
-    const deletePiece = (id) =>
-        fetch(`/api/music/${id}`, {
-            method: 'DELETE',
+    const saveLibrary = (newLibrary) =>
+        fetch('/api/libraries', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
-        });
+            },
+            body: JSON.stringify(newLibrary)
+        })
+
+    const handleSavingLibrary = (event) => {
+        event.preventDefault();
+        const newLibrary = {
+            title: addLibraryInput.val(),
+            user_id: userId
+        }
+        console.log(newLibrary)
+        saveLibrary(newLibrary).then((data) => {
+            console.info('library successfully added')
+            event.target.reset()
+            handleFetchingLibrariesByUser(data)
+                .then(data => {
+                    handlePopulatingLibraries(data)
+                })
+                .catch(err => {
+                    console.error('error:', err);
+                })
+        })
+    }
 
     const handleSavingPiece = (event) => {
         event.preventDefault();
@@ -175,6 +193,7 @@ if (window.location.pathname === '/library') {
 
     addForm.on('submit', handleSavingPiece);
     logoutButton.on('click', handleLoggingOut);
+    addLibraryForm.on('submit', handleSavingLibrary)
 
     handleFetchingLibrariesByUser()
         .then(data => {
@@ -184,4 +203,10 @@ if (window.location.pathname === '/library') {
         .catch(err => {
             console.error('error:', err);
         });
+
+    const onload = () => {
+        profileName.text(user.user.username);
+    }
+
+    onload()
 }

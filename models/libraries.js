@@ -8,14 +8,18 @@ Libraries.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true, 
             autoIncrement: true
         },
         title: {
             type: DataTypes.TEXT,
+            allowNull: false,
+            unique: true,
         },
         user_id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: User,
                 key: 'id'
