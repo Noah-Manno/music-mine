@@ -1,5 +1,4 @@
-let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, logoutButton;
-
+let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, logoutButton, tableBody, folders, activeLibraryTitle;
 if (window.location.pathname === '/login') {
     userInput = $('#username')
     passwordInput = $('#password')
@@ -109,72 +108,4 @@ if (window.location.pathname === '/signup') {
         }
     }
     signupForm.on('submit', handleSignUpFormSubmit)
-}
-
-if (window.location.pathname === '/library') {
-    addForm = $('#form')
-    titleInput = $('#piece_name')
-    composerInput = $('#composer')
-    ensembleInput = $('#ensemble')
-    challengeInput = $('#challenge')
-    voicingInput = $('#voicing')
-    languageInput = $('#language')
-    descInput = $('#description')
-    addPieceButton = $('#add-piece')
-    logoutButton = $('#logout-button')
-
-    const getMusic = () =>
-        fetch('/api/music', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-    const savePiece = (newPiece) =>
-        fetch('/api/music', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newPiece)
-        })
-
-    const deletePiece = (id) =>
-        fetch(`/api/music/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-    const handleSavingPiece = (event) => {
-        event.preventDefault();
-        activeLibrary = JSON.parse(sessionStorage.getItem('activeLibrary'));
-        const newPiece = {
-            'title': titleInput.val(),
-            'composer': composerInput.val() || '',
-            'ensemble': ensembleInput.val() || '',
-            'challenge': challengeInput.val() || '',
-            'voicing': voicingInput.val() || '',
-            'language': languageInput.val() || '',
-            'desc': descInput.val() || '',
-            'library_id': activeLibrary,
-        };
-        console.log(newPiece)
-        savePiece(newPiece).then(() => {
-            console.info('song successfully added')
-            event.currentTarget.reset();
-        });
-    };
-
-    const handleLoggingOut = () => {
-        sessionStorage.setItem('user', '')
-        sessionStorage.setItem('activeLibrary', '')
-        window.location.replace('/');
-    }
-
-    addForm.on('submit', handleSavingPiece);
-    logoutButton.on('click', handleLoggingOut);
-
 }
