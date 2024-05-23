@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const library = require('./library')
+const music = require('./music')
+const libraries = require('./libraries')
 const users = require('./userRoutes')
 
-router.use('/library', library);
+router.use('/music', music)
+router.use('/libraries', libraries);
 router.use('/users', users);
 
 module.exports = router;

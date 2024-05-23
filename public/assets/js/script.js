@@ -54,6 +54,20 @@ if (window.location.pathname === '/signup') {
     newUsernameInput = $('#newUsername')
     newPasswordInput = $('#newPassword')
 
+    const createDefaultLibraries = async (data) => {
+        const defaultLibrary = {
+            'title': `${data.user.username}'s Library`,
+            'user_id': data.user.id
+        }
+        const response = await fetch('/api/libraries', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(defaultLibrary)
+        })
+    }
+
     const signUp = async (newSignUp) => {
         try {
             const response = await fetch('/api/users/signup', {
@@ -67,6 +81,7 @@ if (window.location.pathname === '/signup') {
             if (response.ok) {
                 console.log('Login response:', data);
                 if (data.message === 'Created new user') {
+                    createDefaultLibraries(data)
                     console.log('Sign up successful');
                     window.location.replace('/login');
                 } else {
@@ -109,7 +124,7 @@ if (window.location.pathname === '/library') {
     logoutButton = $('#logout-button')
 
     const getMusic = () =>
-        fetch('/api/library', {
+        fetch('/api/music', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +132,7 @@ if (window.location.pathname === '/library') {
         });
 
     const savePiece = (newPiece) =>
-        fetch('/api/library', {
+        fetch('/api/music', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -126,7 +141,7 @@ if (window.location.pathname === '/library') {
         })
 
     const deletePiece = (id) =>
-        fetch(`/api/library/${id}`, {
+        fetch(`/api/music/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -135,10 +150,8 @@ if (window.location.pathname === '/library') {
 
     const handleSavingPiece = (event) => {
         event.preventDefault();
-        user = JSON.parse(sessionStorage.getItem('user'));
-        userId = user.user.id;
+        activeLibrary = JSON.parse(sessionStorage.getItem('activeLibrary'));
         const newPiece = {
-            'user_id': userId,
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
@@ -146,6 +159,7 @@ if (window.location.pathname === '/library') {
             'voicing': voicingInput.val() || '',
             'language': languageInput.val() || '',
             'desc': descInput.val() || '',
+            'library_id': activeLibrary,
         };
         console.log(newPiece)
         savePiece(newPiece).then(() => {
@@ -156,6 +170,7 @@ if (window.location.pathname === '/library') {
 
     const handleLoggingOut = () => {
         sessionStorage.setItem('user', '')
+        sessionStorage.setItem('activeLibrary', '')
         window.location.replace('/');
     }
 

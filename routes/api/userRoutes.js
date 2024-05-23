@@ -42,7 +42,7 @@ user.post('/signup', async (req, res) => {
         if (!existingUser) {
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = await User.create({ username, password: hashedPassword, email });
-            res.status(200).json({ message: 'Created new user' })
+            res.status(200).json({ message: 'Created new user', user: newUser })
         } else {
             res.status(401).json({ message: 'User already exists' })
         }
