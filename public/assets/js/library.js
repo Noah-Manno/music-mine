@@ -25,8 +25,6 @@ if (window.location.pathname === '/library') {
         });
     }
 
-    const deletePiece()
-
     const handleFetchingMusicByLibrary = async (data) => {
         console.log(data)
         let activeLibrary = JSON.parse(sessionStorage.getItem('activeLibrary'))
