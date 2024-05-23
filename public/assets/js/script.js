@@ -1,4 +1,4 @@
-let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton;
+let addForm, loginForm, userInput, passwordInput, signupForm, newEmailInput, newUsernameInput, newPasswordInput, titleInput, composerInput, ensembleInput, challengeInput, voicingInput, languageInput, descInput, addPieceButton, logoutButton;
 
 if (window.location.pathname === '/login') {
     userInput = $('#username')
@@ -19,7 +19,8 @@ if (window.location.pathname === '/login') {
                 console.log('Login response:', data);
                 if (data.message === 'Login successful') {
                     console.log('Login successful');
-                    window.location.replace('/add');
+                    sessionStorage.setItem('user', JSON.stringify(data));
+                    window.location.replace('/library');
                 } else {
                     console.error('Login failed:', data.message);
                 }
@@ -95,7 +96,7 @@ if (window.location.pathname === '/signup') {
     signupForm.on('submit', handleSignUpFormSubmit)
 }
 
-if (window.location.pathname === '/add') {
+if (window.location.pathname === '/library') {
     addForm = $('#form')
     titleInput = $('#piece_name')
     composerInput = $('#composer')
@@ -105,9 +106,10 @@ if (window.location.pathname === '/add') {
     languageInput = $('#language')
     descInput = $('#description')
     addPieceButton = $('#add-piece')
+    logoutButton = $('#logout-button')
 
     const getMusic = () =>
-        fetch('/api/add', {
+        fetch('/api/library', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -115,7 +117,7 @@ if (window.location.pathname === '/add') {
         });
 
     const savePiece = (newPiece) =>
-        fetch('/api/add', {
+        fetch('/api/library', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -124,7 +126,7 @@ if (window.location.pathname === '/add') {
         })
 
     const deletePiece = (id) =>
-        fetch(`/api/add/${id}`, {
+        fetch(`/api/library/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -133,7 +135,10 @@ if (window.location.pathname === '/add') {
 
     const handleSavingPiece = (event) => {
         event.preventDefault();
+        user = JSON.parse(sessionStorage.getItem('user'));
+        userId = user.user.id;
         const newPiece = {
+            'user_id': userId,
             'title': titleInput.val(),
             'composer': composerInput.val() || '',
             'ensemble': ensembleInput.val() || '',
@@ -149,5 +154,12 @@ if (window.location.pathname === '/add') {
         });
     };
 
+    const handleLoggingOut = () => {
+        sessionStorage.setItem('user', '')
+        window.location.replace('/');
+    }
+
     addForm.on('submit', handleSavingPiece);
+    logoutButton.on('click', handleLoggingOut);
+
 }

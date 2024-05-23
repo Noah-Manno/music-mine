@@ -39,6 +39,8 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
+    position: fixed;
 }
 
 .sidenav-trigger {
@@ -87,9 +89,79 @@ h2 {
     font-size: 50px;
     font-weight: 800;
     color: var(--maincolor);
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
+.folders {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    margin: 50px 20px 0px 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid var(--maincolor);
+    border-bottom: 1px solid var(--maincolor);
+}
+.folder {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.folder:hover {
+    cursor: pointer;
+}
+
+.folder-icons {
+    font-size: 100px;
+    color: cyan;
+    margin-top: 0px;
+}
+
+h3 {
+    margin: 0px;
+    text-align: center;
+    font-size: 20px;
+    font-family: var(--font2);
+}
+
+.library-title {
+    display: flex;
+    align-items: center;
+}
+
+h4 {
+    font-family: var(--mainfont);
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.current-library-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-folder {
+    font-size: 40px;
+}
+
+.add-piece {
+    font-size: 35px;
+    color: var(--maincolor);
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+th {
+    color: var(--maincolor);
+}
+
+.piece-name {
+    font-weight: 800;
+}
 @media only screen and (max-width: 992px) {
 
     header,

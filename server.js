@@ -29,8 +29,8 @@ app.get('/signup', (req, res) =>
 );
 
 // GET route for Add Page
-app.get('/add', (req, res) => 
-    res.sendFile(path.join(__dirname, '/public/add.html'))
+app.get('/library', (req, res) => 
+    res.sendFile(path.join(__dirname, '/public/library.html'))
 );
 
 // GET route for Music Page

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/materialize/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login.css">
-    <link rel="stylesheet" href="./assets/css/add.css">
+    <link rel="stylesheet" href="./assets/css/library.css">
 </head>
 
 <body>
@@ -28,11 +28,6 @@
             <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
                 <i class="material-icons">menu</i>
             </a>
-            <div class="input-field hide-on-med-and-down">
-                <i class="material-icons prefix">search</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">Search Users</label>
-              </div>
             <img class="logo-top hide-on-large-only" src="./assets/images/logoCentered.png" alt="logo">
         </div>
         <ul id="nav-mobile" class="sidenav sidenav-fixed">
@@ -45,16 +40,61 @@
             <div class="profile-button-container">
                 <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i>profile_name</a>
                 </li>
-                <li><a href="#!"><i class="material-icons white-icon logout">logout</i>Logout</a></li>
+                <li><a id="logout-button"><i class="material-icons white-icon logout">logout</i>Logout</a></li>
             </div>
         </ul>
     </header>
     <main>
-        <h2>Your Libraries</h2>
-        <!-- Modal Trigger -->
-        <a class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">add_circle</i></a>
+        <div class="library-title">
+            <h2>Libraries</h2>
+            <a class="waves-effect waves-light modal-trigger" href="#modal1"><i
+                    class="material-icons add-folder">create_new_folder</i></a>
+        </div>
+        <div class="folders">
+            <div class="folder">
+                <h3>BHS Choral Library</h3>
+                <i class="material-icons folder-icons">folder_open</i>
+            </div>
+            <div class="folder">
+                <h3>Home Library</h3>
+                <i class="material-icons folder-icons">folder</i>
+            </div>
+        </div>
+        <div class="current-library">
+            <div class="current-library-title-container">
+                <h4>BHS Choral Library</h4>
+                <a class="waves-effect waves-light modal-trigger" href="#modal1"><i
+                        class="material-icons add-piece">add_circle</i></a>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">search</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Search Library</label>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Composer/Arranger</th>
+                  <th>Added On:</th>
+              </tr>
+            </thead>
+    
+            <tbody id="table-body">
+              <tr>
+                <td class="piece-name">Sleep</td>
+                <td>Eric Whitace</td>
+                <td>5/23/24</td>
+              </tr>
+            </tbody>
+          </table>
+
     </main>
-    <!-- Modal Structure -->
+    <!-- Add Piece Modal -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h1>Add A Piece</h1>
@@ -152,6 +192,7 @@
         });
     </script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/library.js"></script>
 </body>
 
 </html>
