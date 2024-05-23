@@ -1,6 +1,6 @@
 :root {
     --maincolor: #5271ff;
-    --mainfont:  "Fira Sans", sans-serif;
+    --mainfont: "Fira Sans", sans-serif;
     --font2: "Oswald", sans-serif;
 }
 
@@ -8,117 +8,93 @@ body {
     overflow-x: hidden;
 }
 
-nav {
-    height: 160px;
-    background-color: transparent;
-    box-shadow: none;
-    --webkit-box-shadow: none;
+header {
+    box-shadow: 0px 0px 10px;
 }
 
-.nav-logo {
-    width: 200px;
-    margin: 30px 80px 0px 0px;
-    animation: .7s slide-right ease-in;
-    animation-fill-mode: forwards;
-}
-
-ul li a {
-    color: black;
-    font-family: var(--mainfont);
-}
-
-nav ul a.btn {
-    margin-top: 15px;
-}
-
-.profile-container {
-    margin-right: 20px;
-    margin-top: 10px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60px;
-}
-
-.dropdown-trigger {
-    color: black;
-    font-family: var(--font2);
+.header-top {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background: transparent;
-    float: right;
-    height: 39%;
-}
-
-.profile-image {
-    width: 25px;
-    margin-left: 2px;
-}
-
-.profile-name {
-    margin: 0px;
-    color: black;
-    position: relative;
-    bottom: 20px;
-    font-family: var(--font2);
 }
 
 .material-icons {
     color: black;
 }
 
-label {
-    color: black !important;
-    font-family: var(--mainfont);
-    font-weight: 300;
-}
-
-.add-music-title {
-    margin-top: 50px;
-    background: white;
-    padding: 20px;
-    border-radius: 26px;
-    box-shadow: 0px 0px 3px white;
-    animation: fade-in .7s ease-in;
-    animation-fill-mode: forwards;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.add-piece, .clear-form {
-    color: white;
-    margin-top: 20px;
-    margin-bottom: 50px;
+.logo-top {
+    width: 200px;
 }
 
 .white-icon {
-    color: white;
+    color: white !important;
+}
+
+.account-circle {
+    font-size: 50px;
 }
 
 .sidenav {
+    background-color: var(--maincolor);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.sidenav-trigger {
+    margin-left: 40px;
 }
 
 .logo-side-container {
     margin-top: 20px;
     justify-self: flex-end;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.logo-side-container li a {
+    font-family: var(--mainfont);
+    color: white;
 }
 
 .logo-small {
     width: 100px
 }
 
-@media only screen and (min-width: 400px){
-    .nav-logo {
-        margin: 0px 0px 0px 20px;
+header,
+main,
+footer {
+    padding-left: 300px;
+}
+
+.profile-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-button-container li a {
+    color: white;
+    font-family: var(--font2);
+    font-size: 20px;
+}
+
+h2 {
+    font-family: var(--mainfont);
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--maincolor);
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 992px) {
+
+    header,
+    main,
+    footer {
+        padding-left: 0;
     }
 }

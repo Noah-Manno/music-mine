@@ -24,17 +24,36 @@
 <body>
 
     <header>
-        <div><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+        <div class="header-top">
+            <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
+                <i class="material-icons">menu</i>
+            </a>
+            <div class="input-field hide-on-med-and-down">
+                <i class="material-icons prefix">search</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Search Users</label>
+              </div>
+            <img class="logo-top hide-on-large-only" src="./assets/images/logoCentered.png" alt="logo">
+        </div>
         <ul id="nav-mobile" class="sidenav sidenav-fixed">
             <div class="logo-side-container">
-                <img class="logo-small"src="./assets/images/musicminesmallerlogo.png" alt="logo">
+                <img class="logo-small" src="./assets/images/whitedesign.png" alt="logo">
+                <li><a href="#!"><i class="material-icons white-icon">library_books</i>Your Libraries</a></li>
+                <li><a href="#!"><i class="material-icons white-icon">music_note</i>Your Concerts</a></li>
+                <li><a href="#!"><i class="material-icons white-icon">handshake</i>Your Network</a></li>
+            </div>
+            <div class="profile-button-container">
+                <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i>profile_name</a>
+                </li>
+                <li><a href="#!"><i class="material-icons white-icon logout">logout</i>Logout</a></li>
             </div>
         </ul>
-      </header>
-
-    <!-- Modal Trigger -->
-    <a class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">add_circle</i></a>
-
+    </header>
+    <main>
+        <h2>Your Libraries</h2>
+        <!-- Modal Trigger -->
+        <a class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">add_circle</i></a>
+    </main>
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -102,11 +121,11 @@
         <div class="modal-footer">
             <button class="btn waves-effect waves-light" type="submit" form="form" name="action">Add Piece
                 <i class="material-icons right white-icon">check</i>
-              </button>
+            </button>
         </div>
     </div>
 
-    
+
 
     <script src="./assets/js/jQuery/jquery-3.7.1.slim.min.js"></script>
     <script src="./assets/js/materialize/materialize.min.js"></script>
