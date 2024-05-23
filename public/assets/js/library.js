@@ -11,15 +11,21 @@ if (window.location.pathname === '/library') {
         data.forEach(piece => {
 
             const newTr = $('<tr>');
+            newTr.attr('data-piece-id', piece.id)
             const newPieceName = $('<td class="piece-name">').text(piece.title);
             const newComposer = $('<td>').text(piece.composer);
-            const newCreatedAt = $('<td>').text(dayjs(piece.createdAt).format('DD/MM/YYYY hh:mm A'))    
+            const newCreatedAt = $('<td>').text(dayjs(piece.createdAt).format('DD/MM/YYYY hh:mm A')) 
+            const newDeleteButton = $('<td>').html('<i class="material-icons trash">delete</i>');
+            newDeleteButton.on('click', () => deletePiece(piece.id))
             newTr.append(newPieceName)
             newTr.append(newComposer)
             newTr.append(newCreatedAt)
+            newTr.append(newDeleteButton)
             tableBody.append(newTr)
         });
     }
+
+    const deletePiece()
 
     const handleFetchingMusicByLibrary = async (data) => {
         console.log(data)
