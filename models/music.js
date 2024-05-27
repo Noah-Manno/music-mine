@@ -49,12 +49,4 @@ Music.init(
     }
 );
 
-Libraries.hasMany(Music, {
-    foreignKey: 'library_id'
-});
-
-Music.belongsTo(Libraries, {
-    foreignKey: 'library_id'
-});
-
 module.exports = Music;
