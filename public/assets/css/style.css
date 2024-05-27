@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .title-container {
@@ -37,22 +38,22 @@ body {
 
 .music-notes {
     position: absolute;
-    bottom: -50px;
+    bottom: 0;
     right: 100px;
     z-index: -2;
-    animation: 3s slide-up ease-in;
+    animation: 3s fade ease-in;
     animation-fill-mode: forwards;
     animation-delay: .2s;        
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(0px);
 }
-@keyframes slide-up {
+@keyframes fade {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(0px);
     } 100% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(-10px);
     }
 }
 
