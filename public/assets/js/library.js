@@ -11,12 +11,12 @@ if (window.location.pathname === '/library') {
         data.forEach(piece => {
 
             const newTr = $('<tr>');
-            newTr.attr('data-piece-id', piece.id)
+            newTr.attr('data-piece-id', piece.piece_id)
             const newPieceName = $('<td class="piece-name">').text(piece.title);
             const newComposer = $('<td>').text(piece.composer);
             const newCreatedAt = $('<td>').text(dayjs(piece.createdAt).format('DD/MM/YYYY hh:mm A')) 
             const newDeleteButton = $('<td>').html('<i class="material-icons trash">delete</i>');
-            newDeleteButton.on('click', () => deletePiece(piece.id))
+            newDeleteButton.on('click', () => deletePiece(piece.piece_id))
             newTr.append(newPieceName)
             newTr.append(newComposer)
             newTr.append(newCreatedAt)
@@ -24,6 +24,26 @@ if (window.location.pathname === '/library') {
             tableBody.append(newTr)
         });
     }
+
+    const deletePiece = async (id) => {
+        try {
+            const response = await fetch(`/api/music/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                $(`tr[data-piece-id="${id}"]`).remove();
+                console.log('deleted item', data);
+            } else {
+                console.error('DELETE failed');
+            }
+        } catch (err) {
+            console.error('error:', err)
+        }
+    };
 
     const handleFetchingMusicByLibrary = async (data) => {
         console.log(data)
