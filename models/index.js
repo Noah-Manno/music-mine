@@ -28,14 +28,4 @@ Music.belongsTo(Libraries, {
     foreignKey: 'library_id'
 });
 
-Concerts.belongsToMany(Music, {
-    through: 'MusicConcerts',
-    foreignKey: 'concert_id'
-});
-
-Music.belongsToMany(Concerts, {
-    through: 'MusicConcerts',
-    foreignKey: 'piece_id'
-});
-
 module.exports = { User, Libraries, Concerts, Music }

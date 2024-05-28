@@ -1,9 +1,9 @@
 if (window.location.pathname === '/library') {
+    profileName = $('#profile-name')
     const tableBody = $('#table-body')
     const folders = $('#folders')
     const activeLibraryTitle = $('#active-library-title')
     const user = JSON.parse(sessionStorage.getItem('user'));
-    console.log(user)
     userId = user.user.id;
 
     const handleFillingTable = (data) => {
@@ -141,7 +141,6 @@ if (window.location.pathname === '/library') {
     logoutButton = $('#logout-button')
     addLibraryForm = $('#add-library-form')
     addLibraryInput = $('#add-library-input')
-    profileName = $('#profile-name')
 
     const savePiece = (newPiece) =>
         fetch('/api/music', {
