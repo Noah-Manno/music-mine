@@ -1,12 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./user')
+const User = require('./user.js')
+const Music = require('./music.js')
 
-class Libraries extends Model { }
+class Concerts extends Model {}
 
-Libraries.init(
+Concerts.init(
     {
-        id: {
+        concert_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true, 
@@ -31,8 +32,8 @@ Libraries.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'libraries'
+        modelName: 'concerts'
     }
 );
 
-module.exports = Libraries;
+module.exports = Concerts;

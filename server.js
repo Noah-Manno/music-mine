@@ -33,9 +33,9 @@ app.get('/library', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/library.html'))
 );
 
-// GET route for Music Page
-app.get('/music', (req, res) => 
-    res.sendFile(path.join(__dirname, '/public/music.html'))
+// GET route for Concerts Page
+app.get('/concerts', (req, res) => 
+    res.sendFile(path.join(__dirname, '/public/concerts.html'))
 );
 sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`Server listening at ${PORT}`));

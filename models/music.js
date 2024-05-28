@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const Libraries = require('./libraries')
+const Concerts = require('./concerts')
 
 class Music extends Model { }
 
@@ -48,13 +49,5 @@ Music.init(
         modelName: 'music'
     }
 );
-
-Libraries.hasMany(Music, {
-    foreignKey: 'library_id'
-});
-
-Music.belongsTo(Libraries, {
-    foreignKey: 'library_id'
-});
 
 module.exports = Music;
