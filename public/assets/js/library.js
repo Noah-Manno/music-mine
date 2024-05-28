@@ -170,7 +170,7 @@ if (window.location.pathname === '/library') {
         saveLibrary(newLibrary).then((data) => {
             console.info('library successfully added')
             event.target.reset()
-            handleFetchingLibrariesByUser(data)
+            handleFetchingLibrariesByUser()
                 .then(data => {
                     handlePopulatingLibraries(data)
                 })

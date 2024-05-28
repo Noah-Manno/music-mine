@@ -63,7 +63,7 @@ concerts.get('/:concert_id', async (req, res) => {
     }
 });
 
-concerts.get('/:user_id', async (req, res) => {
+concerts.get('/user/:user_id', async (req, res) => {
     const ConcertsData = await Concerts.findAll({
         where: {
             user_id: req.params.user_id,

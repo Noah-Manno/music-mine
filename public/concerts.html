@@ -53,6 +53,8 @@
         </div>
         <div id="concerts"class="folders">
         </div>
+
+        <h4 id="active-concert-title"></h4>
     </main>
       
     
@@ -65,6 +67,18 @@
                     <div class="input-field col s12">
                         <input id="add-concert-input" type="text" class="validate">
                         <label for="add-concert-input">Concert Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="concert-type">
+                            <option value="" disabled selected></option>
+                            <option value="Winter">Winter</option>
+                            <option value="Spring">Holiday</option>
+                            <option value="Holiday">Holiday</option>
+                            <option value="Fall">Fall</option>
+                            <option value="Summer">Summer</option>
+                            <option value="noTheme">No Theme/Other</option>
+                        </select>
+                        <label>Choose A Concert Theme</label>
                     </div>
                 </form>
             </div>
