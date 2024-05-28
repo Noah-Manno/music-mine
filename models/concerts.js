@@ -18,6 +18,9 @@ Concerts.init(
             allowNull: false,
             unique: true,
         },
+        concert_type: {
+            type: DataTypes.TEXT,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
