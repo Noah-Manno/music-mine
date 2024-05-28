@@ -6,7 +6,7 @@ class Concerts extends Model {}
 
 Concerts.init(
     {
-        id: {
+        concert_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true, 

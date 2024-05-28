@@ -37,3 +37,5 @@ Music.belongsToMany(Concerts, {
     through: 'MusicConcerts',
     foreignKey: 'piece_id'
 });
+
+module.exports = { User, Libraries, Concerts, Music }
