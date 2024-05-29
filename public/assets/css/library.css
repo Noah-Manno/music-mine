@@ -99,6 +99,7 @@ h2 {
 .folders {
     display: flex;
     flex-direction: row;
+    align-items: center;
     overflow-x: scroll;
     margin: 50px 20px 0px 20px;
     padding-top: 20px;
@@ -111,6 +112,9 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .folder:hover {
