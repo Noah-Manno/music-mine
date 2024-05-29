@@ -9,6 +9,93 @@ if (window.location.pathname === '/concerts') {
     concertInput = $('#add-concert-input')
     concertTypeInput = $('#concert-type')
     logoutButton = $('#logout-button')
+    addSongToConcertInput = $('#autocomplete-input')
+    addSongToConcertForm = $('#add-song-to-concert')
+
+
+    const handleConnectingSongtoConcert = async (data) => {
+        let pieceId = data.piece_id
+        let activeConcert = JSON.parse(sessionStorage.getItem('activeConcert'));
+        let activeConcertId = activeConcert.concert_id;
+        try {
+            const response = await fetch(`/api/concerts/${activeConcertId}music/${pieceId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Piece Connected To Active Concert:', data);
+            } else {
+                console.error('POST failed');
+            }
+        } catch (err) {
+            console.error('error:', err)
+        }
+    }
+
+    const handleFetchingSongId = async (newSong) => {
+        try {
+            const response = await fetch(`/api/music/${newSong}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Music GET response:', data);
+                handleConnectingSongtoConcert(data)
+            } else {
+                console.error('GET failed');
+            }
+        } catch (err) {
+            console.error('error:', err)
+        }
+    }
+
+    const handleAddingSongToConcert = async () => {
+        newSong = addSongToConcertInput.val()
+        handleFetchingSongId(newSong)
+    }
+
+    const handleFillingAutoComplete = (music) => {
+        console.log(music)
+
+        const data = {};
+
+        music.forEach(piece => {
+            data[piece.title] = null;
+        });
+
+        $(document).ready(function () {
+            $('input.autocomplete').autocomplete({
+                data: data
+            });
+        });
+    }
+
+    const handleFetchingMusicForAutoComplete = async (data) => {
+        console.log(data)
+        try {
+            const response = await fetch(`/api/music`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Music GET response:', data);
+                handleFillingAutoComplete(data)
+            } else {
+                console.error('GET failed');
+            }
+        } catch (err) {
+            console.error('error:', err)
+        }
+    }
 
     const handleChangingToActiveConcert = (event) => {
         const concertId = $(event.currentTarget).attr('data-concert-id')
@@ -21,8 +108,6 @@ if (window.location.pathname === '/concerts') {
                 activeConcertTitle.text($(this).find('h3').text());
             }
         });
-
-        // handleFetchingMusicByLibrary(libraryId);
     }
 
     const handlePopulatingConcerts = (data) => {
@@ -130,6 +215,7 @@ if (window.location.pathname === '/concerts') {
     handleFetchingConcertsByUser()
         .then(data => {
             handlePopulatingConcerts(data);
+            handleFetchingMusicForAutoComplete()
         })
         .catch(err => {
             console.error('error:', err);
@@ -137,6 +223,7 @@ if (window.location.pathname === '/concerts') {
 
     concertForm.on('submit', handleSavingConcert)
     logoutButton.on('click', handleLoggingOut);
+    addSongToConcertForm.on('submit', handleAddingSongToConcert)
 
     const onload = () => {
         profileName.text(user.user.username);
