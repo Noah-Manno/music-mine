@@ -9,32 +9,47 @@ if (window.location.pathname === '/concerts') {
     concertInput = $('#add-concert-input')
     concertTypeInput = $('#concert-type')
 
+    const handleChangingToActiveConcert = (event) => {
+        const concertId = $(event.currentTarget).attr('data-concert-id')
+        sessionStorage.setItem('activeConcert', concertId)
+
+        $('.folder i').text('music_note');
+        $('.folder').each(function () {
+            if ($(this).attr('data-concert-id') === concertId) {
+                $(this).find('i').text('library_music');
+                activeConcertTitle.text($(this).find('h3').text());
+            }
+        });
+
+        // handleFetchingMusicByLibrary(libraryId);
+    }
+
     const handlePopulatingConcerts = (data) => {
         let activeConcert = JSON.parse(sessionStorage.getItem('activeConcert'))
         concerts.empty()
         for (let index = 0; index < data.length; index++) {
             const concert = data[index];
             const newFolder = $('<div class="folder">')
-            newFolder.attr('data-concert-id', concert.id);
+            newFolder.attr('data-concert-id', concert.concert_id);
 
             const newFolderTitle = $('<h3>').text(concert.title)
             const newFolderIcon = $('<i class="material-icons folder-icons">')
 
             switch (concert.concert_type) {
                 case 'Winter':
-                    newFolder.css('background-image', 'url("")');
+                    newFolder.css('background-image', 'url("./assets/images/musicminetypes/winter.png")');
                     break;
                 case 'Holiday':
-                    newFolder.css('background-image', 'url("")');
+                    newFolder.css('background-image', 'url("./assets/images/musicminetypes/Holidays.png")');
                     break;
                 case 'Spring':
-                    newFolder.css('background-image', 'url("")');
+                    newFolder.css('background-image', 'url("./assets/images/musicminetypes/Spring.png")');
                     break;
                 case 'Summer':
-                    newFolder.css('background-image', 'url("")');
+                    newFolder.css('background-image', 'url("./assets/images/musicminetypes/summer.png")');
                     break;
                 case 'Fall':
-                    newFolder.css('background-image', 'url("")');
+                    newFolder.css('background-image', 'url("./assets/images/musicminetypes/Fall.png")');
                     break;
                 default:
                     newFolder.css('background-image', 'none');
@@ -49,6 +64,7 @@ if (window.location.pathname === '/concerts') {
             }
             newFolder.append(newFolderTitle);
             newFolder.append(newFolderIcon);
+            newFolder.on('click', handleChangingToActiveConcert)
             concerts.append(newFolder);
         }
     }
