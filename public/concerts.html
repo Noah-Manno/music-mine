@@ -35,11 +35,13 @@
             <div class="logo-side-container">
                 <img class="logo-small" src="./assets/images/whitedesign.png" alt="logo">
                 <li><a href="/library"><i class="material-icons white-icon">library_books</i>Your Libraries</a></li>
-                <li class="active" ><a href="/concerts"><i class="material-icons white-icon">music_note</i>Your Concerts</a></li>
+                <li class="active"><a href="/concerts"><i class="material-icons white-icon">music_note</i>Your
+                        Concerts</a></li>
                 <li><a href="/network"><i class="material-icons white-icon">handshake</i>Your Network</a></li>
             </div>
             <div class="profile-button-container">
-                <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i><span id="profile-name">profile_name</span></a>
+                <li><a href="#!"><i class="material-icons white-icon account-circle">account_circle</i><span
+                            id="profile-name">profile_name</span></a>
                 </li>
                 <li><a id="logout-button"><i class="material-icons white-icon logout">logout</i>Logout</a></li>
             </div>
@@ -51,43 +53,64 @@
             <a class="waves-effect waves-light modal-trigger" href="#modal3"><i
                     class="material-icons add-folder">library_add</i></a>
         </div>
-        <div id="concerts"class="folders">
+        <div id="concerts" class="folders">
         </div>
 
         <h4 id="active-concert-title"></h4>
-    </main>
-      
-    
-         <!-- Add Concert Modal -->
-         <div id="modal3" class="modal">
-            <div class="modal-content">
-                <h1>Create New Concert</h1>
-                <form id="add-concert-form" class="row add-music">
-                    <!-- Concert -->
+
+        <div class="button-container-concerts">
+            <button class="btn waves-effect waves-light" type="submit" form="add-song-to-concert" name="action">Add Song
+                To Concert
+                <i class="material-icons right white-icon">check</i>
+
+            </button>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="add-concert-input" type="text" class="validate">
-                        <label for="add-concert-input">Concert Name</label>
+                        <form action="submit" id="add-song-to-concert"></form>
+                        <i class="material-icons prefix">music_note</i>
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Choose A Song</label>
                     </div>
-                    <div class="input-field col s12">
-                        <select id="concert-type">
-                            <option value="" disabled selected></option>
-                            <option value="Winter">Winter</option>
-                            <option value="Spring">Spring</option>
-                            <option value="Holiday">Holiday</option>
-                            <option value="Fall">Fall</option>
-                            <option value="Summer">Summer</option>
-                            <option value="noTheme">No Theme/Other</option>
-                        </select>
-                        <label>Choose A Concert Theme</label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn waves-effect waves-light" type="submit" form="add-concert-form" name="action">Add Concert
-                    <i class="material-icons right white-icon">check</i>
-                </button>
+                </div>
             </div>
         </div>
+
+    </main>
+
+
+    <!-- Add Concert Modal -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h1>Create New Concert</h1>
+            <form id="add-concert-form" class="row add-music">
+                <!-- Concert -->
+                <div class="input-field col s12">
+                    <input id="add-concert-input" type="text" class="validate">
+                    <label for="add-concert-input">Concert Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <select id="concert-type">
+                        <option value="" disabled selected></option>
+                        <option value="Winter">Winter</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Holiday">Holiday</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Summer">Summer</option>
+                        <option value="noTheme">No Theme/Other</option>
+                    </select>
+                    <label>Choose A Concert Theme</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn waves-effect waves-light" type="submit" form="add-concert-form" name="action">Add Concert
+                <i class="material-icons right white-icon">check</i>
+            </button>
+        </div>
+    </div>
 
 
 
