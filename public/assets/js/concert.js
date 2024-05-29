@@ -8,6 +8,7 @@ if (window.location.pathname === '/concerts') {
     concertForm = $('#add-concert-form')
     concertInput = $('#add-concert-input')
     concertTypeInput = $('#concert-type')
+    logoutButton = $('#logout-button')
 
     const handleChangingToActiveConcert = (event) => {
         const concertId = $(event.currentTarget).attr('data-concert-id')
@@ -120,6 +121,12 @@ if (window.location.pathname === '/concerts') {
         })
     }
 
+    const handleLoggingOut = () => {
+        sessionStorage.setItem('user', '')
+        sessionStorage.setItem('activeConcert', '')
+        window.location.replace('/');
+    }
+
     handleFetchingConcertsByUser()
         .then(data => {
             handlePopulatingConcerts(data);
@@ -129,6 +136,7 @@ if (window.location.pathname === '/concerts') {
         });
 
     concertForm.on('submit', handleSavingConcert)
+    logoutButton.on('click', handleLoggingOut);
 
     const onload = () => {
         profileName.text(user.user.username);
