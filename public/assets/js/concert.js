@@ -69,10 +69,9 @@ if (window.location.pathname === '/concerts') {
             data[piece.title] = null;
         });
 
-        $(document).ready(function () {
-            $('input.autocomplete').autocomplete({
-                data: data
-            });
+        
+        $('input.autocomplete').autocomplete({
+            data: data
         });
     }
 
@@ -215,11 +214,12 @@ if (window.location.pathname === '/concerts') {
     handleFetchingConcertsByUser()
         .then(data => {
             handlePopulatingConcerts(data);
-            handleFetchingMusicForAutoComplete()
         })
         .catch(err => {
             console.error('error:', err);
         });
+
+    handleFetchingMusicForAutoComplete()
 
     concertForm.on('submit', handleSavingConcert)
     logoutButton.on('click', handleLoggingOut);

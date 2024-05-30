@@ -37,6 +37,6 @@ app.get('/library', (req, res) =>
 app.get('/concerts', (req, res) => 
     res.sendFile(path.join(__dirname, '/public/concerts.html'))
 );
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Server listening at ${PORT}`));
 });
