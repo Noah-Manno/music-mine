@@ -16,9 +16,8 @@ if (window.location.pathname === '/concerts') {
     const handleConnectingSongtoConcert = async (data) => {
         let pieceId = data.piece_id
         let activeConcert = JSON.parse(sessionStorage.getItem('activeConcert'));
-        let activeConcertId = activeConcert.concert_id;
         try {
-            const response = await fetch(`/api/concerts/${activeConcertId}music/${pieceId}`, {
+            const response = await fetch(`/api/concerts/${activeConcert}/music/${pieceId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,7 +36,7 @@ if (window.location.pathname === '/concerts') {
 
     const handleFetchingSongId = async (newSong) => {
         try {
-            const response = await fetch(`/api/music/${newSong}`, {
+            const response = await fetch(`/api/music/title/${newSong}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,7 +54,8 @@ if (window.location.pathname === '/concerts') {
         }
     }
 
-    const handleAddingSongToConcert = async () => {
+    const handleAddingSongToConcert = async (event) => {
+        event.preventDefault()
         newSong = addSongToConcertInput.val()
         handleFetchingSongId(newSong)
     }

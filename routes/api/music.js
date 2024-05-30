@@ -22,7 +22,7 @@ music.get('/:library_id', async (req, res) => {
     return res.json(musicData);
 });
 
-music.get('/:title', async (req, res) => {
+music.get('/title/:title', async (req, res) => {
     const musicData = await Music.findOne({
         where: {
             title: req.params.title,
