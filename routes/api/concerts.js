@@ -9,8 +9,15 @@ concerts.get('/', async (req, res) => {
 });
 
 concerts.post('/', async (req, res) => {
+    try {
     const ConcertsData = await Concerts.create(req.body)
+    if (ConcertsData) {
+        return res.status(400).json({ message: 'concert could not be created'})
+    }
     return res.json(ConcertsData)
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
 
 concerts.delete('/:concert_id', async (req, res) => {

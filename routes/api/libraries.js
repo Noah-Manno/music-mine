@@ -7,8 +7,15 @@ libraries.get('/', async (req, res) => {
 });
 
 libraries.post('/', async (req, res) => {
+    try {
    const LibrariesData = await Libraries.create(req.body)
+   if (!LibrariesData) {
+        return res.status(400).json({ message: 'could not create library' })
+   }
    return res.json(LibrariesData)
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
 
 libraries.get('/:user_id', async (req, res) => {
